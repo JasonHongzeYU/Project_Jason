@@ -1,0 +1,317 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\begin{document}
+
+\title{Euler Square with Combinatorial Design}
+
+\author{Hongze YU\\ {\small 971850}}
+\date{\today}
+\maketitle
+\begin{abstract}
+This report is writing for describing the project topic in detail and collect some of the sources which including Latin square, mutually orthogonal Latin square, especially the mutually orthogonal Latin square of order 10， which is the core of the project. Moreover, some relational problems such as projective plane also would be mentioned.
+\end{abstract}
+\tableofcontents
+\section{Introduction}
+
+The combinatorial design has a long time to attract me, and in my report, there will be numeral researches which relate to Euler Square and other combinatorial problems.
+The topic of this project is relevant to the Euler matrix, which is a historical mathematic conjecture proposed by Euler in 300 years ago. Moreover, the core of this project is to determine whether there exist three pairwise orthogonal Latin square of order 10. All of these concepts will be described later.  The main idea is to experiment with the possible cases step by step by using a computer, that means an appropriate model and algorism is necessary. 
+
+The tools could be used for the project mainly including Java, R and Git software. Probably, the algorithm part will be developed in a Java environment. Since there are numerous experimental results which be created during the test, one R programming software has been considered as a statistic means. Besides, Git could benefit those researchers who work collaboratively. Git is a codes management software, and users can review all of the present action. Furthermore, they can share their works on GitHub, which is a git-based database website.
+
+\section{Literature Review}
+
+\subsection{Latin Matrix}
+\textbf{Definition.} In line with \cite{ref11}, a Latin square of order n is a square which contains n rows and n columns, in which n different elements from a set S are assembled, so that each element arises exactly once in every row and column. 
+
+
+\textbf{Examples:}
+
+\[ (1) \begin{bmatrix} 1 & 2 & 3 & 4 & 5 & 6\\6 & 1 & 2 & 3 & 4 & 5\\5 & 6 & 1 & 2 & 3 & 4\\
+                   4 & 5 & 6 & 1 & 2 & 3\\3 & 4 & 5 & 6 & 1 & 2\\2 & 3 & 4 & 5 & 6 & 1\end{bmatrix}\surd \quad
+   (2) \begin{bmatrix} 1 & 2 & 3 & 4 & 5 & 6\\2 & 1 & 6 & 3 & 4 & 5\\5 & 6 & 1 & 2 & 3 & 4\\
+                   4 & 5 & 6 & 1 & 2 & 3\\3 & 4 & 5 & 6 & 1 & 2\\2 & 3 & 4 & 5 & 6 & 1\end{bmatrix}\times \]
+
+For these two examples, we can see (1) is a Latin square of order 6 but (2) is not. Because the first column has double 2 and the third one has repeat 3.
+
+Furthermore, if a Latin square of order n is reduced or in standard form, that means the first row and the first column of this Latin square is in the natural order of that set S. For example, this is one reduced Latin square in set $S = {1, 2, 3, …, n}$:
+
+
+\[ \begin{bmatrix}
+1 & 2 & \dots & n-1 & n \\
+2 & 3 & \dots & n & 1 \\
+\vdots &  & \ddots &  & \vdots \\
+n & 1 & \dots & n-2 & n-1 \end{bmatrix} \]
+
+\subsection{Latin Square Transformation and Isotopism}
+
+According to \cite{ref1}, we can define some specific groups which could create new Latin squares base on a given Latin square.
+
+\begin{enumerate}[1.]
+\item All permutations of the set of Latin square element in the alphabet.
+\item All permutations of the row number and column number.
+\end{enumerate}
+\textbf{Definition.} If a group of Latin square created by these two transformations, we called they are isotopic. Isotopism is an equivalence relation, so the whole set of Latin squares can be divided into subsets of isotopic classes.\\
+
+\textbf{Examples:}
+
+\[ (1) \begin{bmatrix} 1 & 2 & 3 & 4 & 5\\2 & 3 & 4 & 5 & 1\\3 & 4 & 5 & 1 & 2\\
+                         4 & 5 & 1 & 2 & 3\\5 & 1 & 2 & 3 & 4 \end{bmatrix}\quad
+   (2) \begin{bmatrix} 2 & 1 & 4 & 3 & 5\\1 & 4 & 3 & 5 & 2\\4 & 3 & 5 & 2 & 1\\
+                         3 & 5 & 2 & 1 & 4\\5 & 2 & 1 & 4 & 3 \end{bmatrix}\quad
+   (3) \begin{bmatrix} 1 & 2 & 3 & 4 & 5\\2 & 5 & 4 & 1 & 3\\3 & 4 & 2 & 5 & 1\\
+                         4 & 1 & 5 & 3 & 2\\5 & 3 & 1 & 2 & 4 \end{bmatrix} \]\\
+We can see (1) is a reduced latin square of order 5. We operate the following permutation on the alphabet, $\sigma = (12)(34)$, which means exchange elements 1 and 2, 3 with 4. This gives us a
+new latin square (2).
+
+Finally, we can obtain a reduced latin square (3) by applying a permutation $\rho = (245)$, which means change the order of 2nd, 4rd and 5th on the rows, and a permutation $\gamma = (12)(34)$, which means exchange the first and second, third and forth columns of (2). 
+
+Both of these three Latin squares are isotypic. The isotypic Latin squares belong to the same isotype. The Latin square is different if they are in different isotype. 
+
+\subsection{The Quantity of Latin Square}
+
+According to previous researches, the number of standard Latin Square in different orders are listed in following.
+
+
+\begin{tabular}{|c|c|c|}
+\hline
+n & $L_n ^ {R}$& Reference\\
+\hline
+1&1&\\
+2&1&\\
+3&1&\\
+4&4&\\
+5&56&\\
+6&9408&\cite{ref3}\\
+7&16942080&\cite{ref4}\\
+8&535281401856&\cite{ref5}\\
+9&377597570964258816&\cite{ref6}\\
+10&7580721483160132811489280&\cite{ref7}\\
+11&5363937773277371298119673540771840&\cite{ref8}\\
+\hline
+\end{tabular}
+\\
+
+
+Furthermore, this table showed that the total number of different Latin square of order n, when $n <= 11$. Here the different does not mean non-isotypic.
+
+
+\begin{tabular}{|c|c|}
+\hline
+n & $L_n$\\
+\hline
+1&1\\
+2&2\\
+3&12\\
+4&576\\
+5&161280\\
+6&812851200\\
+7&61479419904000\\
+8&108776032459082956800\\
+9&5524751496156892842531225600\\
+10&9982437658213039871725064756920320000\\
+11&776966836171770144107444346734230682311065600000\\
+\hline
+\end{tabular} \\
+
+As reported in \cite{ref1}, the amount of Latin square is overgrowing so that we can not identify that the quantity of different Latin square and standard Latin square for any given order n. However, there is a principle that the total number of distinct Latin squares of order n is equal to the number of distinct standard Latin squares of order n times $n! (n - 1)!$. This equivalent is also found from\cite{ref2}.
+
+\subsection{Mutually Orthogonal Latin square}
+
+\textbf{Definition.} According to \cite{ref11}, if we take two latin squares of order n, $L$ and $L'$, on respectively the symbol set $S = \{a_0, a_1, . . . , a_{n−1}\}$ and the symbol set $S' = \{b_0, b_1, . . . , b_n−1\}$. These two latin squares are called mutually orthogonal if there exists for each ordered pair $(i, j) \in \{a_0, a_1, . . . , a_{n−1}\} \times \{b_0, b_1, . . . , b_{n−1}\}$, exactly one ordered pair $(k, l) \in \{0, 1, . . . , n-1\} \times \{0, 1, . . . , n-1\}$, such that $L_{k,l} = i$ and $L'_{k,l} = j$.\\
+
+\textbf{Examples:} 
+\[ \begin{bmatrix} 1 & 2 & 3 & 4\\2 & 1 & 4 & 3\\3 & 4 & 1 & 2\\4 & 3 & 2 & 1 \end{bmatrix} \quad
+   \begin{bmatrix} 1 & 3 & 4 & 2\\2 & 4 & 3 & 1\\3 & 1 & 2 & 4\\4 & 2 & 1 & 3 \end{bmatrix} \quad
+\rightarrow
+   \begin{bmatrix}(1,1) & (2,3) & (3,4) & (4,2)\\(2,2) & (1,4) & (4,3) & (3,1)\\
+                  (3,3) & (4,1) & (1,2) & (2,4)\\(4,4) & (3,2) & (2,1) & (1,3) \end{bmatrix} \]
+
+We can see these two Latin squares are orthogonal because the new MOLS has 16 distinct elements.
+
+\[ \begin{bmatrix} 1 & 2 & 3 & 4\\2 & 1 & 3 & 4\\3 & 2 & 1 & 4\\4 & 3 & 2 & 1 \end{bmatrix} \quad
+   \begin{bmatrix} 1 & 3 & 4 & 2\\2 & 4 & 3 & 1\\3 & 1 & 2 & 4\\4 & 2 & 1 & 3 \end{bmatrix} \quad
+\rightarrow
+   \begin{bmatrix}(1,1) & (2,3) & (3,4) & (4,2)\\(2,2) & (1,4) & (3,3) & (4,1)\\
+                  (3,3) & (2,1) & (1,2) & (4,4)\\(4,4) & (3,2) & (2,1) & (1,3) \end{bmatrix} \]
+
+Oppositely, these two Latin squares are not orthogonal because we can find there are double (2,1), (3,3) and (4,4) element.\\
+
+
+\textbf{Definition.} A set of Latin squares $L_1, L_2, . . . , L_k$ is mutually orthogonal when $L_i$ and $L_j$ are orthogonal for all $1 \le i < j \le k$. Then, we can overlap them together to get a  (k) MOLS.
+
+\textbf{Examples:}
+\[ \begin{bmatrix} 1 & 2 & 3 & 4 & 5\\5 & 1 & 2 & 3 & 4\\4 & 5 & 1 & 2 & 3\\
+                   3 & 4 & 5 & 1 & 2\\2 & 3 & 4 & 5 & 1 \end{bmatrix} \quad
+   \begin{bmatrix} 1 & 2 & 3 & 4 & 5\\2 & 3 & 4 & 5 & 1\\3 & 4 & 5 & 1 & 2\\
+                   4 & 5 & 1 & 2 & 3\\5 & 1 & 2 & 3 & 4 \end{bmatrix} \quad
+   \begin{bmatrix} 1 & 2 & 3 & 4 & 5\\3 & 4 & 5 & 1 & 2\\5 & 1 & 2 & 3 & 4\\
+                   2 & 3 & 4 & 5 & 1\\4 & 5 & 1 & 2 & 3 \end{bmatrix} \]
+These three Latin square are mutually orthogonal because for all pair of them could be orthogonal to one Euler square. Thus they can form a 3 MOLS of order 5.
+
+\textbf{Lemma.} In line with \cite{ref1}, there is a lemma that for all set of k MOLS, which means there are k Latin squares can be superimposed together confirmed above definition, for all permutation on the alphabet of the Latin squares, does not affect the orthogonality of those Latin squares.
+
+\textbf{Definition.} According to \cite{ref11}, similar with Latin square, we say that a set of k different MOLS of order n is reduced (or in standard form), if one of the Latin squares is standard, and if the first row in every other Latin square in this set is in the natural order of the symbol sets, we chose.
+
+\textbf{Definition.} In arguement with \cite{ref12}, we have:
+\begin{enumerate}[1.]
+\item the maximal set $MOLS(n)$ is a set $(k)MOLS(n)$ such that it is impossible to extend this set to a set $(k + 1)MOLS(n)$;
+\item $N(n) = max\{k : \exists (k)MOLS(n)\}$.
+\end{enumerate}
+
+\textbf{Theorem.} For each $n \ge 2, N(n) \le n - 1$ .
+
+\textbf{Proof.} Firstly, due to the lemma which mentioned before, We can change the first row of these mutually orthogonal Latin squares into natural order, if we define all for these Latin square made by the set $S = {1, 2,\cdots,n}$, then these squares should seems like :
+
+\[ \begin{bmatrix}
+1 & 2 & \dots & n-1 & n \\
+L(2,1) & \ddots &  &  & \vdots \\
+\vdots &  & \ddots &  & \vdots \end{bmatrix} \]
+
+Now, we can consider about the possible value of $L(2,1)$. There are up to n-1 possibilities exist because there can not be a same number as its top block. Moreover, these Latin squares must have different values in $L(2,1)$. If $L_i(2,1) = L_j(2,1)$, then Euler square $L_{ij}(2,1)=(k,k)$, it is not vaild becuase every $(k,k)$ should in row 1.
+Therefore, combine the above two points we can proof for each $n \ge 2, N(n) \le n - 1$.
+
+\subsection{Examples of MOLS of Distinct Orders}
+
+\[Order 3:\begin{bmatrix}(1,1) & (2,3) & (3,2)\\
+                         (2,2) & (3,1) & (1,3)\\
+                         (3,3) & (1,2) & (2,1) \end{bmatrix} \]\\
+
+\[Order 4:\begin{bmatrix}(1,1) & (2,3) & (3,4) & (4,2)\\
+                         (2,2) & (1,4) & (4,3) & (3,1)\\
+                         (3,3) & (4,1) & (1,2) & (2,4)\\
+                         (4,4) & (3,2) & (2,1) & (1,3) \end{bmatrix} \]\\
+
+\[Order 5:\begin{bmatrix}(1,1) & (2,3) & (3,5) & (4,2) & (5,4)\\
+                         (2,2) & (3,4) & (4,1) & (5,3) & (1,5)\\
+                         (3,3) & (4,5) & (5,2) & (1,4) & (2,1)\\
+                         (4,4) & (5,1) & (1,3) & (2,5) & (3,2)\\
+                         (5,5) & (1,2) & (2,4) & (3,1) & (4,3) \end{bmatrix} \]\\
+
+\[Order 7:\begin{bmatrix}(1,1) & (2,7) & (3,6) & (4,5) & (5,4) & (6,3) & (7,2)\\
+                         (2,2) & (3,1) & (4,7) & (5,6) & (6,5) & (7,4) & (1,3)\\
+                         (3,3) & (4,2) & (5,1) & (6,7) & (7,6) & (1,5) & (2,4)\\
+                         (4,4) & (5,3) & (6,2) & (7,1) & (1,7) & (2,6) & (3,5)\\
+                         (5,5) & (6,4) & (7,3) & (1,2) & (2,1) & (3,7) & (4,6)\\
+                         (6,6) & (7,5) & (1,4) & (2,3) & (3,2) & (4,1) & (5,7)\\
+                         (7,7) & (1,6) & (2,5) & (3,4) & (4,3) & (5,2) & (6,1) \end{bmatrix} \]\\
+
+
+\subsection{MOLS of Order 10}
+According to \cite{ref9}, MOLS problem firstly appeared in front of the world in 1779, Euler described that 36 soldier’s challenge in his paper. This real-world problem aroused the interest of Euler, but it also makes him confused. 
+
+When Euler was proving the problem of the existence of such a matrix, he found out a new idea and turned this problem into the issue of whether there exist a pair of orthogonal Latin squares. Naturally, each Euler matrix of order n can be decomposed into two mutually orthogonal Latin squares. On the other hand, two mutually orthogonal Latin squares can be superimposed into a Euler matrix. Therefore, the existence of Euler squares is equivalent to the existence of 2 mutually orthogonal Latin square problem.
+
+As reported by \cite{ref9}, Euler can easily prove that $n = 2$ is impossible, while $n = 3, n = 4, n = 5$ is possible. But for the case of $n = 6$, Euler cannot find an instance that meets the requirements, and he also cannot prove that it does not exist. In 1782, Euler talked about this problem: "I have experimented with many tables (Latin square), I am sure that it is impossible to make two mutually orthogonal tables of order 6, furthermore, for $n=10, 14, ...$ and all of the order of 2 times odd number is impossible.". Euler believes that the Euler square of order $4n + 2$ does not exist. This argument also could be called Euler conjecture.\\
+
+In 1900, Gaston Tarry listed all Latin squares of order 6 with the help of his brother. He checked that they are non-orthogonal, it confirmed that the Euler conjecture is correct when $n = 6$.
+
+In April 1959, Indian mathematicians Bose and Srikhande published \cite{ref10} and constructed two orthogonal Latin squares of 22-order and made a Euler matrix of order 22 to overthrow the Euler conjecture. Immediately, they proved that Euler matrix for any order n is exist without some cases of $n = 2, n = 6, n = 14, n = 26$. Then, the American mathematician Parker constructed the Euler square of order 14 and order 26.
+Currently, the research on MOLS problem is aimed to identify $N(10)\ge 3$ or $N(10)= 2$. Stinson and Zhu declare in their paper\cite{ref12} that when n is an odd number, $N(n)\ge 3$, but in cases of n is even, it will be very complex. They conjectured the possible N(n) for a set of cases, which $n = 2^k$. Determine N(n) for $n \in even$ is complicated through mathematical derivation.
+There is the example of MOLS of order 10. 
+
+\[ \begin{bmatrix}(1,1)&(2,4)&(3,7)&(4,9)&(5,6)&(6,8)&(7,10)&(8,2)&(9,3)&(10,5)\\
+                  (7,9)&(3,3)&(10,4)&(5,7)&(4,1)&(8,6)&(6,2)&(2,10)&(1,5)&(9,8)\\
+                  (6,10)&(7,1)&(5,5)&(9,4)&(8,7)&(4,3)&(2,6)&(10,9)&(3,8)&(1,2)\\
+                  (10,6)&(6,9)&(7,3)&(8,8)&(1,4)&(2,7)&(4,5)&(9,1)&(5,2)&(3,10)\\
+                  (4,8)&(9,6)&(6,1)&(7,5)&(2,2)&(3,4)&(10,7)&(1,3)&(8,10)&(5,9)\\
+                  (9,7)&(4,2)&(1,6)&(6,3)&(7,8)&(10,10)&(5,4)&(3,5)&(2,9)&(8,1)\\
+                  (8,4)&(1,7)&(4,10)&(3,6)&(6,5)&(7,2)&(9,9)&(5,8)&(10,1)&(2,3)\\
+                  (3,2)&(5,10)&(8,9)&(2,1)&(10,3)&(9,5)&(1,8)&(4,4)&(7,7)&(6,6)\\
+                  (5,3)&(8,5)&(2,8)&(10,2)&(9,10)&(1,9)&(3,1)&(7,6)&(6,4)&(4,7)\\ 
+                  (2,5)&(10,8)&(9,2)&(1,10)&(3,9)&(5,1)&(8,3)&(6,7)&(4,6)&(7,4)\end{bmatrix} \]
+Especially, Parker conjecture that there only 2 mutually orthogonal Latin square exist in \cite{ref13}. Thus, this project is aimed at proof his conjecture or falsification of it by computational approach.
+
+\subsection{Combinatorial Design}
+
+The combinatorial problems related to Latin squares, which are a sort of combinatorial design, it attracts the attention of mathematicians for the last several centuries, as stated in \cite{ref14}. In recent years, numeral new computational approaches which developed to solve these problems have appeared. For instance, it was shown that there is no finite projective plane of order 10. It was done using special algorithms based on constructions and results from the theory of error-correcting codes. The corresponding experiment took several years, and on its final stage employed quite a powerful (at that moment) computing cluster.
+
+One more recent example is the proof of hypothesis about the minimal number of clues in Sudoku where unique algorithms were used to enumerate and check all possible Sudoku variants, as stated in \cite{ref14}. To solve this problem, a modern computing cluster had been working for almost a year. In to search for some sets of Latin squares, a particular program system based on the algorithms of the search for a maximal clique in a graph was used.
+
+\subsection{Projective Plane}
+\textbf{Definition.} According to \cite{ref1}, an \textbf{incidence structure} $\rho = (P, B, I)$ is a finite set of points P, a limited set of lines B, and a relation I between the points and the lines, called the incidence relation. The term incidence presented asymmetric relationship which means it not only known as the point is on a line, but also shows that the line through this point.\\ 
+
+\textbf{Definition.} Base on \cite{ref1}, we can consider the projective plane $\rho$ is a finite incidence structure such that the following properties hold:
+\begin{enumerate}[1.]
+\item For any two different points are incident with an exact line.
+\item For any two different lines are incident with an exact point.
+\item There exist a set of four points such that no three of them are incident with one line.
+\end{enumerate}
+
+That means for any 2 points in this projection plane could determine a line, and all lines are not parallel to each other.\\
+
+As reported in \cite{ref14}, There is the same number of lines the same number of points for one projective plane. Therefore, there is an integer n ($N\le2$) for any finite projective plane such that this plane has:
+\begin{enumerate}[1.]
+\item $N^2 + N + 1$ points,
+\item $N^2 + N + 1$ lines,
+\item $N + 1$ points on each line, and
+\item $N + 1$ lines through each point.
+\end{enumerate}
+
+The integer N is called the order of this projective plane.
+
+\textbf{Example.} There is an example of a projective plane of order 3:
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+   &$B_1$&$B_2$&$B_3$&$B_4$&$B_5$&$B_6$&$B_7$&$B_8$&$B_9$&$B_{10}$&$B_{11}$&$B_{12}$&$B_{13}$\\
+\hline
+$P_1$&1&1&1&1& & & & & & & & & \\
+\hline
+$P_2$&1& & & &1&1&1& & & & & & \\
+\hline
+$P_3$&1& & & & & & &1&1&1& & & \\
+\hline
+$P_4$&1& & & & & & & & & &1&1&1\\
+\hline
+$P_5$& &1& & &1& & &1& & &1& & \\
+\hline
+$P_6$& &1& & & &1& & &1& & &1& \\
+\hline
+$P_7$& &1& & & & &1& & &1& & &1\\
+\hline
+$P_8$& & &1& &1& & & &1& & & &1\\
+\hline
+$P_9$& & &1& & &1& & & &1&1& & \\
+\hline
+$P_{10}$& & &1& & & &1&1& & & &1& \\
+\hline
+$P_{11}$& & & &1&1& & & & &1& &1& \\
+\hline
+$P_{12}$& & & &1& &1& &1& & & & &1\\
+\hline
+$P_{13}$& & & &1& & &1& &1& &1& & \\
+\hline
+\end{tabular} \\
+
+
+As far as the Euler square problem, Projective plane problem also attracted many researchers since the Renaissance. \\
+
+\textbf{Theorem.} According to Bose in \cite{ref15}, the projection plane of order n could be constructed if and only if we can construct the $n-1$ MOLS of order n, which also called the complete set of $n-1$ orthogonal Latin squares of order n.
+
+
+Through many efforts, we already know the projective planes of order 6 and order ten is impossible. Especially, order 10 is proved by heavy computer calculation. Therefore, we knew the total number of MOLS of order 10 less than 9.
+
+\section{Conclusion}
+
+In conclusion, this report analyzed the intention of this project, which is confirm if there are three mutually orthogonal Latin squares of order 10 exist. Through the literature review process, some basic knowledge has been presented, such as the determination of Latin square, determination of MOLS and the evolutionary history of this problem. Besides, this report described the difficulty of making a MOLS especially when n increased, the total number of Latin squares of that order will be expulsion. Therefore, experiment 3 MOLS of order 10 by using a computer is feasible. Furthermore, there is a Latin square rebuilt method which based on Group theory has been pointed out; this might be useful for design our algorithm. Finally, some examples of two MOLS of different orders have been displayed.
+\begin{thebibliography}{99}  
+
+\bibitem{ref1}Vanpoucke J. Mutually orthogonal Latin squares and their generalizations. A Master thesis submitted to the Faculty of Sciences, Ghent University, 2012.
+\bibitem{ref2}Laywine C F, Mullen G L. Discrete mathematics using Latin squares. John Wiley \& Sons, 1998.
+\bibitem{ref3}Frolov M. Recherches sur les permutations carrés. J. Math. Spéc.(3), 1890, 4: 25-30.
+\bibitem{ref4}Sade A. Enumeration des carres latins: Application au 7e ordre; Conjecture pour les ordres superieurs. Selbstverl., 1948.
+\bibitem{ref5}Wells M B. The number of Latin squares of order eight. Journal of Combinatorial Theory, 1967, 3(1): 98-99.
+\bibitem{ref6}Bammel S E, Rothstein J. The number of 9× 9 Latin squares. Discrete Mathematics, 1975, 11(1): 93-95.
+\bibitem{ref7}McKay B D, Rogoyski E. Latin squares of order 10. Electronic Journal of Combinatorics, 1995, 2(3): 1-4.
+\bibitem{ref8}McKay B D, Wanless I M. On the number of Latin squares. Annals of combinatorics, 2005, 9(3): 335-344.
+\bibitem{ref9}Frisinger H H. The solution of a famous two-centuries-old problem the Leonhard Euler-Latin square conjecture. Historia Mathematica, 1981, 8(1): 56-60.
+\bibitem{ref10}Bose R C, Shrikhande S S, Parker E T. Further results on the construction of mutually orthogonal Latin squares and the falsity of Euler's conjecture. Canadian Journal of Mathematics, 1960, 12: 189-203.
+\bibitem{ref11}Abel R J R, Brouwer A E, Colbourn C J, et al. Mutually orthogonal Latin squares (MOLS). The CRC handbook of combinatorial designs, 1996.
+\bibitem{ref12}Stinson D R, Zhu L. On sets of three MOLS with holes. Discrete mathematics, 1985, 54(3): 321-328.
+\bibitem{ref13}E. T. Parker, Attempts for orthogonal latin 10-squares, Abstracts Amer. Math. Soc., Vol. 12 1991 \#91T-05-27.
+\bibitem{ref14}Zaikin O, Kochemazov S. The search for systems of diagonal Latin squares using the SAT@ home project. International Journal of Open Information Technologies, 2015, 3(11): 4-9.
+\bibitem{ref15}Ryser, Herbert John. Combinatorial Mathematics, American Mathematical Society, 1962. ProQuest Ebook Central, https://ebookcentral.proquest.com/lib/swansea-ebooks/detail.action?docID=3330476.
+
+\end{thebibliography}
+\end{document}

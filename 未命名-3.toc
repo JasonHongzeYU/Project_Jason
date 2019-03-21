@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Literature Review}{2}
+\contentsline {subsection}{\numberline {2.1}Latin Matrix}{2}
+\contentsline {subsection}{\numberline {2.2}Latin Square Transformation and Isotopism}{3}
+\contentsline {subsection}{\numberline {2.3}The Quantity of Latin Square}{4}
+\contentsline {subsection}{\numberline {2.4}Mutually Orthogonal Latin square}{5}
+\contentsline {subsection}{\numberline {2.5}Examples of MOLS of Distinct Orders}{7}
+\contentsline {subsection}{\numberline {2.6}MOLS of Order 10}{7}
+\contentsline {subsection}{\numberline {2.7}Combinatorial Design}{9}
+\contentsline {subsection}{\numberline {2.8}Projective Plane}{9}
+\contentsline {section}{\numberline {3}Conclusion}{11}

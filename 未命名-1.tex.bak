@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+
+\title{The Research Report On Project About Euler Matrix And Its Extension Problem}
+\author{Hongze YU}
+\date{\today}
+\maketitle
+\tableofcontents
+
+\section{Problem Description}
+
+The topic of my project is relevant to Euler matrix, which is a historical mathematic conjecture proposed by Euler in 300 years ago.
+Reportedly, Frederick the Great of Prussia once formed an honor guard. This honor guard developed by 36 soldiers whom come from six units.
+In addition, for every unit among them, has 6 soldiers in different ranks, which are Colonel, Lieutenant Colonel, Major, Captain, Lieutenant, and Lieutenant. He hopes that the 36 solders could be arranged into a 6¡Á6 square matrix, each line and column of the square, which include six members, comes from different units and has different ranks. However, the fact is not as his expect. later, he went to ask the famous Swiss mathematician Euler, and Euler found that is an impossible task.
+Those n¡Án elements came from n ranks multiply n units, if they can be arranged in a square, in each row and each column, each of the elements 1st to n from different units and different ranks, then the square is called orthogonal Latin square. Euler guessed when:
+
+$n=2,6,10,14,18,...$
+
+The orthogonal Latin square does not exist.
+Although, in the 1960s, scientists created an orthogonal Latin square of order 10 by using computer, which overthrown Euler's argument. It is now known as, except for n=2 and 6, the orthogonal Latin squares of any order is exist and there are various ways of constructing them.\\
+
+Presently, we already know that the Euler Matrix equals to 2 Latin matrixes (in this case, ranks and units) orthogonal, in other words, overlapping two matrices. For example:
+
+
+This also could be called 2 mutually orthogonal Latin squares of order 4. Furthermore, here is an example for 3 mutually orthogonal Latin squares
+of order 5:
+
+The core problem of this project is to determine whether there exist 3 pairwise orthogonal Latin square of order 10. The main idea is experiment the
+possible cases step by step by using computer, that means an appropriate model and algorism is necessary.\\
+
+The tools could be used for the project mainly including Visual Studio Code , RStudio and Git software. Probably, the algorithm part will be developed in Java environment, therefore, VS Code could strongly support the work. Since there are numerous experimental results which be created during the test, one R software has been considered as a statistic means. In addition, Git could benefit those researchers who works collaboratively. Basically, Git is a codes management software, users can review all of the present action, furthermore, they can share their works on github, which is a git-based database website. Those software would be introduced in detail later.
+
+\section{Literature Review}
+
+\subsection{Latin Matrix}
+
+\subsection{Orthogonal Latin Matrix}
+
+\subsection{Review of Historical research}
+
+\section{Introduction of Programming Environments}
+
+\subsection{Java and VS Code}
+
+Java is an object-oriented programming language. It not only contained the advantages of the C++ programming language, but also removed those complex concepts, such as multiple inheritance and pointers, which are difficult to understand in C++. Therefore, the Java language is powerful and easy to use. As a representative of object-oriented programming language, Java accorded to object-oriented theory seriously, and it allow programmers to perform complicated programming in an elegant way.
+There are lots of characteristics with Java, including and not limited with simplicity, object-oriented, distributed, robustness, security, platform independence and portability, multi-threading, dynamics. The PC applications, web applications, distributed systems, embedded system applications could be developed in Java.\\
+
+Visual Studio Code is a source code edition software developed by Microsoft company, for Windows, Linux and mac operation system. There are many powerful features with it, including support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refracturing. It is free and open-source, although the official download is under a proprietary license.In the Stack Overflow 2018 Developer Survey, Visual Studio Code was ranked the most popular developer environment tool, with 34.9\% of 75,398 respondents claiming to use it.\\
+
+\subsection{R Statistic Software}
+
+The R language is a programming language and software environment for statistical analysis and graphical representation. The R language was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and debuted in 1993. The core team of R language development is currently being further developed.
+
+The core of the R language is the interpretation of computer languages, which allow branching, looping structure and modular programming by using functions. It also allows the integration work with those codes written in C, C++, .Net, Python or FORTRAN, in order to increase efficiency.
+
+The R language is provided free under the GNU General Public License and supported a pre-compiled binary version for different operating systems such as Linux, Windows and Mac.\\
+
+RStudio is an integrated development environment base on R language, and fully free as well as R language. R only supplied a commend-line developing style, therefore, I divided to use RStudio as an edit tool. \\
+
+\subsection{Git and Github}
+
+safafs
+
+sfasfa
+
+f affasf
+
+\end{document}
